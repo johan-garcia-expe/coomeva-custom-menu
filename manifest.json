@@ -1,9 +1,10 @@
 {
-  "vendor": "CHANGE_ME",
-  "name": "CHANGE_ME",
+  "vendor": "coomeva",
+  "name": "custom-menu",
   "version": "0.1.0",
-  "title": "CHANGE_ME",
-  "description": "CHANGE_ME",
+  "title": "Custom Menu",
+  "description": "Coomeva Custom Menu",
+  "defaultLocale": "es-CO",
   "builders": {
     "docs": "0.x",
     "react": "3.x",
@@ -11,9 +12,12 @@
   },
   "dependencies": {
     "vtex.css-handles": "0.x",
-    "vtex.render-runtime": "8.x"
+    "vtex.render-runtime": "8.x",
+    "vtex.device-detector": "0.x"
   },
-  "registries": ["smartcheckout"],
+  "registries": [
+    "smartcheckout"
+  ],
   "policies": [],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"
 }

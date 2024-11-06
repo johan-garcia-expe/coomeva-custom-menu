@@ -1,5 +1,16 @@
-{
-  "example-component": {
-    "component": "ExampleComponent"
+{ 
+  "admin-menu": {
+    "component": "AdminMenu"
+  },
+  "menu-context-provider": {
+    "component": "MenuContext"
+  },
+  "Menu-desktop-custom": {
+    "component": "MenuDesktop",
+    "composition": "children"
+  },
+  "menu-mobile-custom": {
+    "component": "MenuMobile",
+    "composition": "children"
   }
-}
+} 
