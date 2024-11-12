@@ -34,41 +34,54 @@ interface Props {
 
 const CategoriesDesktop = ({ categories }: Props) => {
   const handles = useCssHandles(CSS_HANDLES_MENU)
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false)
-  const [subCat, setSubCat] = useState<any>(false)
-  const [catActiveActive, setIsCatActive] = useState<any>(0)
+  const [ user, setUser ] = useState<string >('')
+  const [ isOpenMenu, setIsOpenMenu ] = useState<boolean>(false)
+  const [ subCat, setSubCat ] = useState<any>(false)
+  const [ catActiveActive, setIsCatActive ] = useState<any>(0)
   // console.log('propiedades DESKTOP: ',props)
-  console.log("categories :", categories)
+  // console.log("categories :", categories)
   const refs = useRef<Array<number>>(new Array(categories?.subMenu?.length));
 
 
   useEffect(() => {
     if (!isOpenMenu) {
       setIsCatActive(0)
-      console.log("catActiveActive", catActiveActive)
+      // console.log("catActiveActive", catActiveActive)
     }
   }, [isOpenMenu])
 
-  const changeIcon = (icon: string, index: number) => {
-    const icons = document.querySelectorAll('.category_icon')
-    icons.forEach((item: any, itemInd: number) => {
-      if (itemInd !== index || !icon) return
-      console.log("item", item)
-      console.log("icon", icon)
-      item.src = icon
-    })
-  }
+  useEffect(() => {
+    const dataClient = localStorage.getItem("dataClient");
+    if(!dataClient) return;
+    const name = JSON.parse( dataClient ).firstName + ','
+    setUser(name.toLowerCase());
+  }, [])
+
+
+  // const changeIcon = (icon: string, index: number) => {
+  //   const icons = document.querySelectorAll('.category_icon')
+  //   icons.forEach((item: any, itemInd: number) => {
+  //     if (itemInd !== index || !icon) return
+  //     console.log("item", item)
+  //     console.log("icon", icon)
+  //     item.src = icon
+  //   })
+  // }
+  
+  useEffect(() => {
+    const subCatSelected = categories?.subMenu ? categories?.subMenu[catActiveActive] : null
+    if (subCatSelected) {
+      setSubCat(subCatSelected)
+    }
+  }, [catActiveActive])
+
   const hoverDepartament = (indexD: number | string) => {
     Object.keys(refs.current).map((ref, index) => {
       if (indexD === index) {
         const catConjunt = categories?.subMenu ? categories?.subMenu[indexD] : {}
         if (catConjunt) {
           setIsCatActive(ref)
-          // console.log( "catConjunt", catConjunt )
-        }
-        const subCatSelected = categories?.subMenu ? categories?.subMenu[catActiveActive] : null
-        if (subCatSelected) {
-          setSubCat(subCatSelected)
+          console.log( "catConjunt", catConjunt )
         }
       }
     })
@@ -77,16 +90,6 @@ const CategoriesDesktop = ({ categories }: Props) => {
     e.preventDefault()
     console.log("cerrar", e)
     setIsOpenMenu(false)
-  }
-
-  const getUserName = () => {
-    const dataClient = localStorage.getItem("dataClient");
-    if(dataClient) {
-      const name = JSON.parse( dataClient ).firstName + ','
-      return name.toLowerCase();
-    }
-    return ''
-
   }
 
   return <>
@@ -99,14 +102,14 @@ const CategoriesDesktop = ({ categories }: Props) => {
       {/* <p><span>CONTACTO: </span>Bogotá/Chía 419-2525   018000-12881</p> */}
       <div className={isOpenMenu ? handles.container_menu_desktop_content + ' ' + handles.active : handles.container_menu_desktop_content}>
         <div className={`${handles.container_menu_desktop_content__header}`}>
-          <span> <b>Hola, <span style={{textTransform: 'capitalize'}}>{getUserName()}</span></b> encuentra todo lo que necesitas en nuestra tienda online </span>
+          <span> <b>Hola, <span style={{textTransform: 'capitalize'}}>{ user }</span></b> encuentra todo lo que necesitas en nuestra tienda online </span>
           <button type='button' onClick={handleClose}> <i className={`${handles.close_icon}`} ></i> <span >Cerrar</span></button>
         </div>
         <div className={`${handles.container_menu_desktop_content__grid}`}>
           <ul className={handles.container_menu_desktop_ul_departament}>
             {categories && categories.subMenu?.map((item: any, index: number) => (
               <li key={`cat_${index}`}
-                onMouseEnter={(() => { hoverDepartament(index); changeIcon(item?.images?.iconOnHover, index) })}
+                onMouseEnter={(() => { hoverDepartament(index) })}
                 // onMouseLeave={(() => {hoverDepartament(index); changeIcon(item?.images?.iconOnHover, index)})} 
                 ref={(item: any) => (refs.current[index] = item)}
                 className={catActiveActive == index ? handles.container_menu_desktop_ul_departament_item + ' ' + handles.active : handles.container_menu_desktop_ul_departament_item} >
