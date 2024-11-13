@@ -60,9 +60,9 @@ MenuProvider.schema = {
         title: "Nombre Departamento",
         type: "object",
         properties: {
-          _editorItemTitle: {
-            default: 'Área Submenu',
-            title: "nombre de item",
+          __editorItemTitle: {
+            default: 'Submenu Item',
+            title: "cambiar nombre de item",
             type: "string"
           },
           externalPage: {
@@ -143,7 +143,7 @@ MenuProvider.schema = {
               title: "Área Item",
               type: "object",
               properties: {
-                _editorItemTitle: {
+                __editorItemTitle: {
                   default: 'Área Item',
                   title: "Nombre de item",
                   type: "string"
@@ -207,7 +207,7 @@ MenuProvider.schema = {
                     title: "SubMenu Item",
                     type: "object",
                     properties: {
-                      _editorItemTitle: {
+                      __editorItemTitle: {
                         default: '',
                         title: "Nombre de submenu item",
                         type: "string"
@@ -294,6 +294,11 @@ MenuProvider.schema = {
               title: "Cabecera",
               type: "object",
               properties: {
+                __editorItemTitle: { // now change name is available
+                  default: 'Categoría',
+                  title: 'Cambiar nombre categoría',
+                  type: 'string'
+               },
                 titleSubMenu: {
                   title: "Título",
                   description: "",

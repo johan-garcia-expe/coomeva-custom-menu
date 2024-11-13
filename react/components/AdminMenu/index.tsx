@@ -26,8 +26,8 @@ AdminMenu.schema = {
                 type: "object",
                 properties: {
                     _editorItemTitle:{  
-                        default:'Área Submenu',
-                       title:"nombre de item",
+                        default:'Submenú item',
+                       title:"cambiar nombre de item",
                        type:"string"
                     },
                     externalPage: {
