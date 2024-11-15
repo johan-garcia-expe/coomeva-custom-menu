@@ -41,8 +41,6 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
 
   console.log('propiedades MOBILE: ', categories, departments)
   const handles = useCssHandles(CSS_HANDLES_MENU)
-  // const [subCategory, setSubCategory] = useState<any>([]);
-  // const [subCategory2, setSubCategory2] = useState<any>([]);
   const [category, setCategory] = useState<any>(null)
   const [subCategory1, setSubCategory1] = useState<any>(null)
   const [subCategory2, setSubCategory2] = useState<any>(null)
@@ -102,7 +100,7 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
   }
 
   const handleSetSubCategory2 = (cat: any, level: number ) => {
-    if( cat?.subMenu || cat?.links ) {
+    if( cat?.subMenu?.length || cat?.links?.length ) {
       setSubCategory2( cat )
       setTimeout(() => {
         setCategoryLevelActive( level )
@@ -151,8 +149,8 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
               >
                 <div className={`${ handles.mobile_category_li_container }`}>
                   {
-                    depa.externalPage ?
-                    <a href={`${depa?.page}`} target='__blank'>
+                    (depa?.page && (!depa?.subMenu?.length || !depa?.subMenu)) ?
+                    <a href={`${depa?.page}`} target={!depa?.externalPage ?'_self' : '_blank'}>
                       {depa?.images?.iconActive && <img src={depa?.images?.icon} width="27"/>  } 
                       {depa.text}
                     </a> :
@@ -173,9 +171,20 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
             {category?.subMenu?.map((category: any, index: number) => (
               <li key={index + '_cate'} className={handles.mobile_category_2level + ' ' + handles.arrow} >
                 <div className={`${ handles.mobile_category_li_container }`}>
-                  {
-                    category.externalPage ?
-                    <a href={`${category?.page}`} target='__blank'>
+                  {category?.links ?
+
+                    (category?.page && (!category?.links?.length || !category?.links) ) ?
+                    <a href={`${category?.page}`} target={!category?.externalPage ?'_self' : '_blank'}>
+                      {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                      {category?.text ?? category?.titleSubMenu}
+                    </a> :
+                    <span onClick={() => handleSetSubCategory(category, 3)}>
+                      {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                      {category?.text ?? category?.titleSubMenu}
+                    </span> 
+                    :
+                    (category?.page && (!category?.subMenu?.length || !category?.subMenu) ) ?
+                    <a href={`${category?.page}`} target={!category?.externalPage ?'_self' : '_blank'}>
                       {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
                       {category?.text ?? category?.titleSubMenu}
                     </a> :
@@ -195,14 +204,14 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
             {subCategory1?.links && subCategory1?.links.map((link: any, index: number) => (
               <li key={index+'_subcate'} className={handles.subCategory_item+' '+handles.arrow} onClick={() => handleSetSubCategory2( link, 4) }>
                 <div className={`${ handles.mobile_category_li_container }`}>
-                  {link.externalPage? <a href={link.page} >{link?.text}</a> :<span >{link?.text}</span>}
+                  {(link?.page && (!link?.subMenu?.length || !link?.subMenu))? <a href={link.page} target={!link?.externalPage ?'_self' : '_blank'}>{link?.text}</a> :<span >{link?.text}</span>}
                 </div>
               </li>
             ))}    
             {subCategory1?.subMenu && subCategory1?.subMenu.map((link: any, index: number) => (
               <li key={index+'_subcate'} className={handles.subCategory_item+' '+handles.arrow} onClick={() => handleSetSubCategory2( link, 4) }>
                 <div className={`${ handles.mobile_category_li_container }`}>
-                  {link.externalPage? <a href={link.page} >{link?.text}</a> :<span >{link?.text}</span>}
+                  {(link?.page && (!link?.subMenu?.length || !link?.subMenu) )? <a href={link.page} target={!link?.externalPage ?'_self' : '_blank'}>{link?.text}</a> :<span >{link?.text}</span>}
                 </div>
               </li>
             ))}     
@@ -211,13 +220,13 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
         {(isOpenMenu && subCategory2) && (
           <ul className={`${categoryLevelActive == 4 &&  handles.active } ${handles.container_category}`} >
             <li className={handles.subCategory_item+' '+handles.back}>
-              <span onClick={()=> () => handleGoBack(3)}>{subCategory2.text}</span> 
+              <span onClick={() => handleGoBack(3)}>{subCategory2.text}</span> 
               <a className={handles.more} href={subCategory2.page}>Ver más</a>
             </li>
             {subCategory2?.subMenu.map((link: any, index: number)=>(
               <li key={index+'_subcate2'} className={handles.subCategory_item+' '+handles.arrow}>
                 <div className={`${ handles.mobile_category_li_container }`}>
-                  <a href={link.url} onClick={ () => cleanMenu() } >{ link?.titleSubMenu }</a>
+                  <a href={link.url} target={!link?.externalPage ?'_self' : '_blank'} onClick={ () => cleanMenu() } >{ link?.titleSubMenu }</a>
                 </div>
               </li>))}     
           </ul>

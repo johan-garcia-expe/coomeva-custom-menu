@@ -192,11 +192,11 @@ a {cursor: pointer}
     .back span::after{
         opacity: 0;
     }
-    .mobile_category_1level.arrow a::after,
+
     .mobile_category_1level.arrow span::after,
     .mobile_category_2level.arrow span::after,
-    .mobile_category_2level.arrow a::after,
-    .subCategory_item.arrow a::after,
+    /* .mobile_category_2level.arrow a::after, */
+    /* .subCategory_item.arrow a::after, */
     .subCategory_item.arrow span::after {
         content: "";
         background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAARCAYAAAAPFIbmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAACSSURBVHgBhZLLEYMwDEQlkkJwB6EDp4sc00oqSCmUgDuAEnSEGx3ALic+NtoZ2RrryZI1lhjjF1bLjaplkT+sB/gqQqrypgOwK4HKhUFC2wGSUkrDBfJA3WeUQD3Xz4EqGZ3A5pGDzGwMoZ7gfgAH76aZJb2eGvRkldO0HV7nzsmduAdQ/AXtHUA9EfxhH0oAtQLHnmXR9+bYWwAAAABJRU5ErkJggg==);
