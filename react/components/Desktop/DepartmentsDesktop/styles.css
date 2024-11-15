@@ -6,40 +6,8 @@
     flex-direction: row;
     align-items: center;
 }
-.overlay {
-    position: fixed;
-    left: 0px;
-    z-index: -1;
-    width: 0;
-    height: 0;
-    background-color: #0007;
-    transition: opacity .35s var(--easing-cubic-bezier);
-    visibility: hidden;
-    opacity: 0;
-}
-.overlay.active{
-    width: 100%;
-    visibility: visible;
-    opacity: 1;
-    height: 100vw;
-}
-.dark_back{
-    position: fixed;
-    left: 0px;
-    z-index: -1;
-    width: 0;
-    height: 0;
-    background-color: #0007;
-    transition: opacity .35s var(--easing-cubic-bezier);
-    visibility: hidden;
-    opacity: 0;
-}
-.dark_back.active{
-    width: 100%;
-    visibility: visible;
-    opacity: 1;
-    height: 100vw;
-}
+
+
 .departament{
     display: flex;
     align-items: center;

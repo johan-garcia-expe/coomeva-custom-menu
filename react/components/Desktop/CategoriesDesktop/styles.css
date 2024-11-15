@@ -19,17 +19,16 @@
 }
 .dark_back{
     position: fixed;
-    left: -100%;
+    width: 100%;
+    left: 0;
     z-index: -1;
-
     background-color: #0007;
-    transition: all .35s var(--easing-cubic-bezier);
+    transition: opacity .35s var(--easing-cubic-bezier);
     visibility: hidden;
     opacity: 0;
 }
 .dark_back.active{
     width: 100%;
-    left: 0px;
     visibility: visible;
     opacity: 1;
     height: 100vh;
