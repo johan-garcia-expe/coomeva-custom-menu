@@ -1,5 +1,6 @@
-// import React, { useEffect, useState } from 'react';
+
 import React, { useState, useEffect } from 'react';
+import { Link } from 'vtex.render-runtime';
 import { useCssHandles } from 'vtex.css-handles';
 //Models
 import type { Categories } from '../../../models/categories.interface';
@@ -172,26 +173,39 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
               <li key={index + '_cate'} className={handles.mobile_category_2level + ' ' + handles.arrow} >
                 <div className={`${ handles.mobile_category_li_container }`}>
                   {category?.links ?
-
+                
                     (category?.page && (!category?.links?.length || !category?.links) ) ?
-                    <a href={`${category?.page}`} target={!category?.externalPage ?'_self' : '_blank'}>
-                      {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
-                      {category?.text ?? category?.titleSubMenu}
-                    </a> :
-                    <span onClick={() => handleSetSubCategory(category, 3)}>
-                      {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
-                      {category?.text ?? category?.titleSubMenu}
-                    </span> 
+                      category?.externalPage ?
+                        <a href={`${category?.page}`} target={'_blank'}>
+                          {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                          {category?.text ?? category?.titleSubMenu}
+                        </a> :
+                        <Link to={category?.page} >
+                          {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                          {category?.text ?? category?.titleSubMenu}
+                        </Link>
+                      :
+                      <span onClick={() => handleSetSubCategory(category, 3)}>
+                        {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                        {category?.text ?? category?.titleSubMenu}
+                      </span> 
+
                     :
                     (category?.page && (!category?.subMenu?.length || !category?.subMenu) ) ?
-                    <a href={`${category?.page}`} target={!category?.externalPage ?'_self' : '_blank'}>
-                      {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
-                      {category?.text ?? category?.titleSubMenu}
-                    </a> :
-                    <span onClick={() => handleSetSubCategory(category, 3)}>
-                      {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
-                      {category?.text ?? category?.titleSubMenu}
-                    </span>
+                      category?.externalPage ?                     
+                        <a href={`${category?.page}`} target={'_blank'}>
+                          {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                          {category?.text ?? category?.titleSubMenu}
+                        </a> :
+                        <Link to={category?.page} >
+                          {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                          {category?.text ?? category?.titleSubMenu}
+                        </Link>
+                      :
+                        <span onClick={() => handleSetSubCategory(category, 3)}>
+                          {category?.images?.iconActive && <img src={category?.images?.icon} width="27"/>  } 
+                          {category?.text ?? category?.titleSubMenu}
+                        </span>
                   }
                 </div>
               </li>
