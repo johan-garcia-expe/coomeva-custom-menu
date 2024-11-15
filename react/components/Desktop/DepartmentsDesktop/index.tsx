@@ -34,7 +34,7 @@ const DepartmentsDesktop = ({ departments }: Props) => {
   const handles = useCssHandles(CSS_HANDLES_MENU)
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const [departamentActive, setIsDepartamentActive] = useState<string | number>(-10)
-  // console.log('propiedades DESKTOP departamento: ',props)
+  console.log('propiedades DESKTOP departamento: ',departments)
 
   const refs = useRef<Array<number>>(new Array(departments ? departments.length : 0));
 
@@ -70,7 +70,8 @@ const DepartmentsDesktop = ({ departments }: Props) => {
             onMouseEnter={() => (
               departament?.externalPage || !departament?.subMenu || departament?.subMenu?.length == 0
             ) ? (setIsOpenMenu(false), hoverDepartament("")) :  (setIsOpenMenu(true), hoverDepartament(indexD))}
-            href={departament?.externalPage ? departament?.page : "javascript:void(0)"}
+            href={departament?.page  ? departament?.page : "javascript:void(0)"}
+            target={!departament?.externalPage ? '_self' : '_blank'}
             ref={(departament: any) => (refs.current[indexD] = departament)}>
             {(departament?.images?.iconActive && !departament?.images?.isOnlyMobile) && (
               <img src={departament?.images?.icon} width="27"/> 

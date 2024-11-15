@@ -1,7 +1,7 @@
 
 .container_menu_desktop{
     z-index: 99999;
-    height: 50px;
+    height: 60px;
     padding:0px 2dvw;
     display: flex;
     align-items: center;
@@ -19,17 +19,17 @@
 }
 .dark_back{
     position: fixed;
-    left: 0px;
+    left: -100%;
     z-index: -1;
-    width: 0;
-    height: 0;
+
     background-color: #0007;
-    transition: opacity .35s var(--easing-cubic-bezier);
+    transition: all .35s var(--easing-cubic-bezier);
     visibility: hidden;
     opacity: 0;
 }
 .dark_back.active{
     width: 100%;
+    left: 0px;
     visibility: visible;
     opacity: 1;
     height: 100vh;
@@ -64,12 +64,11 @@
 .container_menu_desktop_content{
     position: absolute;
     height: 100dvh;
-    width: 100dvw;
-    left: 0px;
-    top:97%;
-    /* transition: opacity .35s var(--easing-cubic-bezier); */
+    width: 90dvw;
+    left: -100%;
+    top:100%;
+    transition: all .35s var(--easing-cubic-bezier);
     z-index: 99999;
-    opacity: 0;
     visibility: hidden;
 }
 .container_menu_desktop_content__header {
@@ -107,6 +106,7 @@
 .container_menu_desktop_content.active{
     opacity: 1;
     visibility: visible;
+    left: 0;
 }
 .container_menu_desktop_ul_departament {
     background: var(--all-white);
