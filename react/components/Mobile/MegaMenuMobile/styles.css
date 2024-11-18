@@ -49,6 +49,12 @@ a {cursor: pointer}
         z-index: -1;
         transition: all .35s var(--easing-cubic-bezier);
     }
+    .container_departament_login {
+        display: grid;
+        grid-template-rows: 1fr auto; /* Define tres filas: header, main, footer */
+        grid-template-columns: 1fr;         /* Una sola columna */
+        height: 100dvh;  
+    }
     .container_mobile_menu.active{
         left: 0px;
         visibility: visible;

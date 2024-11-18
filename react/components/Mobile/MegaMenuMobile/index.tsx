@@ -23,6 +23,9 @@ const CSS_HANDLES_MENU = [
   'link_redirect',
   "img_logo",
   'container_departament',
+  'container_departament_login',
+  'login_container',
+  'login_section',
   'mobile_category_li_container',
   'mobile_category_1level',
   'mobile_category_2level',
@@ -130,41 +133,50 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
             <button type='button' className={`${handles.menu_mobile__close_btn}`} onClick={() => cleanMenu()}></button>
           </div>
         </section>
-        <ul className={`${categoryLevelActive == 1 && handles.active} ${handles.container_departament}`} >
-          <li
-            className={`${handles.arrow} ${handles.mobile_category_1level}`}
-            onClick={() => handleSetCategory( categories, 2) }
-          >
-            <div className={`${ handles.mobile_category_li_container }`}>
-              <span >
-                {categories?.images?.iconActive && <img src={categories?.images?.icon} width="27"/>  }  
-                {categories?.text}
-              </span>
-            </div>
-          </li>
-          {
-            departments && Object.values(departments).map((depa:Department) => (
-              <li
-                key={depa.text}
-                className={`${depa?.subMenu && handles.arrow} ${handles.mobile_category_1level}`}
-              >
-                <div className={`${ handles.mobile_category_li_container }`}>
-                  {
-                    (depa?.page && (!depa?.subMenu?.length || !depa?.subMenu)) ?
-                    <a href={`${depa?.page}`} target={!depa?.externalPage ?'_self' : '_blank'}>
-                      {depa?.images?.iconActive && <img src={depa?.images?.icon} width="27"/>  } 
-                      {depa.text}
-                    </a> :
-                    <span onClick={() => handleSetCategory( depa, 2 ) }>
-                      {depa?.images?.iconActive && <img src={depa?.images?.icon} width="27"/>  } 
-                      {depa?.text}
-                    </span>
-                  }
-                </div>
-              </li>
-            ))
-          }
-        </ul>
+        <div className={`${handles.container_departament_login}`}>
+          <ul className={`${categoryLevelActive == 1 && handles.active} ${handles.container_departament}`}>
+            <li
+              className={`${handles.arrow} ${handles.mobile_category_1level}`}
+              onClick={() => handleSetCategory( categories, 2) }
+            >
+              <div className={`${ handles.mobile_category_li_container }`}>
+                <span >
+                  {categories?.images?.iconActive && <img src={categories?.images?.icon} width="27"/>  }  
+                  {categories?.text}
+                </span>
+              </div>
+            </li>
+            {
+              departments && Object.values(departments).map((depa:Department) => (
+                <li
+                  key={depa.text}
+                  className={`${depa?.subMenu && handles.arrow} ${handles.mobile_category_1level}`}
+                >
+                  <div className={`${ handles.mobile_category_li_container }`}>
+                    {
+                      (depa?.page && (!depa?.subMenu?.length || !depa?.subMenu)) ?
+                      <a href={`${depa?.page}`} target={!depa?.externalPage ?'_self' : '_blank'}>
+                        {depa?.images?.iconActive && <img src={depa?.images?.icon} width="27"/>  } 
+                        {depa.text}
+                      </a> :
+                      <span onClick={() => handleSetCategory( depa, 2 ) }>
+                        {depa?.images?.iconActive && <img src={depa?.images?.icon} width="27"/>  } 
+                        {depa?.text}
+                      </span>
+                    }
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+          <section className={handles.login_section}>
+            {/* <div className={handles.login_container}>
+              <a href='' >Iniciar sesión / Registrarse</a>
+              
+            </div> */}
+          </section>
+        </div>
+        
         {(isOpenMenu && category) && (
           <ul  className={`${categoryLevelActive == 2 &&  handles.active } ${handles.container_category}`} >
             <li className={handles.subCategory_item + ' ' + handles.back}><span onClick={() => handleGoBack(1)}>{category?.text}</span> <a className={handles.more} href={category.page} >Ver todo</a></li>

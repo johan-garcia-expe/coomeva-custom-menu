@@ -240,7 +240,7 @@ MenuProvider.schema = {
       },
     },
     menuCategoriesV1: {
-        title: "Menu categorías",
+        title: "Menu de categorías",
         type: "object",
         properties: {
           // externalPage: {

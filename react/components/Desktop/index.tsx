@@ -17,17 +17,15 @@ const MenuDesktop = () => {
     const { menu } = useContext(MenuContext);
 
     // console.log(props)
-    // console.log('menuProps: ',menu)
+    console.log('menuProps: ',menu)
   return  (
     <nav>
         <div className='flex'>
             <CategoriesDesktop categories={ menu.categories }/>   
             <DepartmentsDesktop departments={menu.departments}/>
         </div>
-
     </nav>
   )
-
 
 };
 
