@@ -239,7 +239,7 @@ MenuProvider.schema = {
         },
       },
     },
-    menuCategories: {
+    menuCategoriesV1: {
         title: "Menu categorías",
         type: "object",
         properties: {
