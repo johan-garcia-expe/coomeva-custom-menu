@@ -2,7 +2,7 @@
   "admin-menu": {
     "component": "AdminMenu"
   },
-  "menu-context-provider": {
+  "menu-context-provider-v1": {
     "component": "MenuContext"
   },
   "Menu-desktop-custom": {
