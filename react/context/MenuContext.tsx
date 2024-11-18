@@ -5,7 +5,7 @@ import type { Categories } from '../models/categories.interface';
 interface AuxProps {
   children: ReactChild | ReactChildren;
   submenus: any[];
-  menuCategories: any;
+  menuCategoriesV1: any;
 }
 
 interface StateProps {
@@ -28,12 +28,12 @@ const inititalState: StateProps = {
 
 export const MenuContext = createContext(inititalState);
 
-export const MenuProvider = ({ children, submenus, menuCategories }: AuxProps) => {
+export const MenuProvider = ({ children, submenus, menuCategoriesV1 }: AuxProps) => {
 
 
   const [menu, setMenu] = useState<Menu>({
     departments: { ...submenus },
-    categories: { ...menuCategories }
+    categories: { ...menuCategoriesV1 }
   });
   const changeMenu = (menu: any) => setMenu(menu);
 
