@@ -62,7 +62,7 @@
 }
 .container_menu_desktop_content{
     position: absolute;
-    height: 100dvh;
+    height: calc(95dvh - 188px);
     width: 90dvw;
     left: -100%;
     top:100%;
@@ -243,10 +243,12 @@
 
 /* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
 
+.container_menu_desktop_ul_departament::-webkit-scrollbar,
 .container_menu_desktop_subMenu_content::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
+.container_menu_desktop_ul_departament::-webkit-scrollbar:vertical,
 .container_menu_desktop_subMenu_content::-webkit-scrollbar:vertical {
     width:10px;
 }
@@ -255,16 +257,18 @@
     display: none;
 } 
 
+.container_menu_desktop_ul_departament::-webkit-scrollbar:horizontal,
 .container_menu_desktop_subMenu_content::-webkit-scrollbar:horizontal {
     height: 10px;
 }
 
+.container_menu_desktop_ul_departament::-webkit-scrollbar-thumb,
 .container_menu_desktop_subMenu_content::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
     border: 2px solid #f1f2f3;
 }
-
+.container_menu_desktop_ul_departament::-webkit-scrollbar-track,
 .container_menu_desktop_subMenu_content::-webkit-scrollbar-track {
     border-radius: 10px;  
 }
@@ -316,4 +320,10 @@
     color: var(--dark-green); 
     font-weight: 700;
     text-decoration: underline;
+}
+@media  (max-height: 600px) {
+    .container_menu_desktop_content{
+
+        height: calc(91dvh - 188px);
+    }
 }
