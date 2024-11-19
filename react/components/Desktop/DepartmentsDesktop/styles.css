@@ -128,10 +128,18 @@
 }
 
 
-@media (max-width:1600px) {
+@media (max-width: 1280px) {
+    .sub_menu li a{
+        font-size: 15px;
+    }
+    .title_category{
 
+        font-size: 15px;
+    }
+    .departament{
+        font-size: 15px;
+    }
     .content_categories{
-        max-height: 80vh;
-        overflow-y: auto;
+        top: 100%;
     }
 }
