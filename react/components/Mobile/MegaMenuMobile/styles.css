@@ -25,6 +25,8 @@ a {cursor: pointer}
         border: none;
         background-color: transparent;
     }
+
+    .container_menu_mobile .btn_toggle_menu::before,
     .btn_toggle_menu::before{
         background-image: url(https://coomeva.vtexassets.com/assets/vtex.file-manager-graphql/images/7c52b713-7cd2-4cab-9735-7fa7b455db08___ab3091a8f8323444a8da54ddc7624429.svg);
         margin: 0px;
