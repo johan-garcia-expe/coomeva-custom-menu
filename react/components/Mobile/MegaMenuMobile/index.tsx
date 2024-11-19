@@ -26,6 +26,8 @@ const CSS_HANDLES_MENU = [
   'container_departament_login',
   'login_container',
   'login_section',
+  'login_custom_btn',
+  'login_custom_ancla',
   'mobile_category_li_container',
   'mobile_category_1level',
   'mobile_category_2level',
@@ -39,12 +41,14 @@ const CSS_HANDLES_MENU = [
 interface Props {
   categories: Categories | null;
   departments: Department[];
+  Login: any;
 }
 
-const MegaMenuMobile = ({ categories, departments }: Props) => {
+const MegaMenuMobile = ({ categories, departments, Login }: Props) => {
 
   console.log('propiedades MOBILE: ', categories, departments)
   const handles = useCssHandles(CSS_HANDLES_MENU)
+  const [user, setUser] = useState<any>(null)
   const [category, setCategory] = useState<any>(null)
   const [subCategory1, setSubCategory1] = useState<any>(null)
   const [subCategory2, setSubCategory2] = useState<any>(null)
@@ -123,6 +127,22 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
     setCategoryLevelActive( 1 )
   }
 
+  useEffect(() => {
+    const dataClient = localStorage.getItem("dataClient");
+    if(!dataClient) return;
+    const name = JSON.parse( dataClient ).firstName
+    setUser(name.toLowerCase());
+
+    () => {
+      setUser( null )
+    }
+  }, [])
+
+  const clickOnLogin = () => {
+    const loginButton = document.querySelector(".vtex-login-2-x-buttonLink .vtex-button") as HTMLElement
+    console.log("loginButton",loginButton)
+    if( loginButton ) loginButton.click()
+  }
   return (
     <nav className={handles.container_menu_mobile} >
       <a className={isOpenMenu ? handles.btn_toggle_menu + ' ' + handles.active : handles.btn_toggle_menu} onClick={() => handleBtnToggle()}> </a>
@@ -170,10 +190,19 @@ const MegaMenuMobile = ({ categories, departments }: Props) => {
             }
           </ul>
           <section className={handles.login_section}>
-            {/* <div className={handles.login_container}>
-              <a href='' >Iniciar sesión / Registrarse</a>
-              
-            </div> */}
+            <div className={handles.login_container}>
+              {  user ?
+                  <a href='/account#/' className={`flex items-center ${handles.login_custom_ancla}`}>
+                    <img className='mr4' width={40} height={40} src='https://coomeva.vtexassets.com/assets/vtex.file-manager-graphql/images/5076637f-a3be-43c6-b6b0-703c6f0bec44___c47b1160cedffd9493f155ccf2acd12e.svg' alt='' />
+                    <span> { user} </span>
+                  </a>
+                :
+                <div className='flex items-center'>
+                  <Login />
+                  <button className={`ml4 ${handles.login_custom_btn}`} onClick={() => clickOnLogin()}> Iniciar sesión / Registrarse</button>
+                </div>
+              } 
+            </div>
           </section>
         </div>
         
