@@ -28,6 +28,8 @@ a {cursor: pointer}
 
     .btn_toggle_menu::before {
         content: "";
+        display: block;
+        background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
         background-image: url(https://coomeva.vtexassets.com/assets/vtex.file-manager-graphql/images/7c52b713-7cd2-4cab-9735-7fa7b455db08___ab3091a8f8323444a8da54ddc7624429.svg);
