@@ -153,8 +153,8 @@ const MegaMenuMobile = ({ categories, departments, Login }: Props) => {
             <button type='button' className={`${handles.menu_mobile__close_btn}`} onClick={() => cleanMenu()}></button>
           </div>
         </section>
-        <div className={`${handles.container_departament_login}`}>
-          <ul className={`${categoryLevelActive == 1 && handles.active} ${handles.container_departament}`}>
+        <div className={`${categoryLevelActive == 1 && handles.active} ${handles.container_departament_login}`}>
+          <ul className={` ${handles.container_departament}`}>
             <li
               className={`${handles.arrow} ${handles.mobile_category_1level}`}
               onClick={() => handleSetCategory( categories, 2) }

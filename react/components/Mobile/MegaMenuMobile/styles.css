@@ -49,16 +49,18 @@ a {cursor: pointer}
         z-index: -1;
         transition: all .35s var(--easing-cubic-bezier);
     }
+
     .container_departament_login {
         position:absolute;
         background:#fff;
         top: 75px;
-        left: 0;
+        left: -100%;
         width: 100%;
         display: grid;
         grid-template-rows: 1fr auto; /* Define tres filas: header, main, footer */
         grid-template-columns: 1fr;         /* Una sola columna */
         height: calc(100% - 75px);  
+        transition: all .35s var(--easing-cubic-bezier);
     }
     .login_section {
         padding: 15px 5% 25px 5%;
@@ -93,6 +95,7 @@ a {cursor: pointer}
         opacity: 1;
         z-index: 9999999;
     }
+
     .container_category,
     .container_subCategory,
     .container_subCategory2 {
@@ -106,7 +109,13 @@ a {cursor: pointer}
         left: -100%;
         overflow-y: auto;
     }
-    .container_departament.active,
+
+    .container_departament{
+        left: 0px;
+        padding: 0px;
+    }
+
+    .container_departament_login.active,
     .container_category.active,
     .container_subCategory.active,
     .container_subCategory2.active{
