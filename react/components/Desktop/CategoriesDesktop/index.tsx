@@ -81,14 +81,14 @@ const CategoriesDesktop = ({ categories }: Props) => {
         const catConjunt = categories?.subMenu ? categories?.subMenu[indexD] : {}
         if (catConjunt) {
           setIsCatActive(ref)
-          console.log( "catConjunt", catConjunt )
+          // console.log( "catConjunt", catConjunt )
         }
       }
     })
   }
   const handleClose = (e: any) => {
     e.preventDefault()
-    console.log("cerrar", e)
+    // console.log("cerrar", e)
     setIsOpenMenu(false)
   }
 

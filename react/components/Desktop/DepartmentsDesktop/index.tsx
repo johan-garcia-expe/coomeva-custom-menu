@@ -34,7 +34,7 @@ const DepartmentsDesktop = ({ departments }: Props) => {
   const handles = useCssHandles(CSS_HANDLES_MENU)
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const [departamentActive, setIsDepartamentActive] = useState<string | number>(-10)
-  console.log('propiedades DESKTOP departamento: ',departments)
+  // console.log('propiedades DESKTOP departamento: ',departments)
 
   const refs = useRef<Array<number>>(new Array(departments ? departments.length : 0));
 
@@ -97,7 +97,7 @@ const DepartmentsDesktop = ({ departments }: Props) => {
                   </ul>
                 </div>
               ))}
-              {(departament.imageBanner) && (
+              {(departament.imageBanner && departament.imageBanner.src != "") && (
                 <div className={handles.categories}>
                   <a className={`${handles.image_banner__container}`} href={departament.imageBanner.href}>
                     <img className={handles.image_banner} src={departament.imageBanner.src} alt={departament.imageBanner.alt} />

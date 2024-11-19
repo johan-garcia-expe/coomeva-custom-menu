@@ -16,7 +16,6 @@ const MenuDesktop = () => {
 
     const { menu } = useContext(MenuContext);
 
-    // console.log(props)
     console.log('menuProps: ',menu)
   return  (
     <nav>

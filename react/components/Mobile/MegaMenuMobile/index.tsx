@@ -46,7 +46,7 @@ interface Props {
 
 const MegaMenuMobile = ({ categories, departments, Login }: Props) => {
 
-  console.log('propiedades MOBILE: ', categories, departments)
+  // console.log('propiedades MOBILE: ', categories, departments)
   const handles = useCssHandles(CSS_HANDLES_MENU)
   const [user, setUser] = useState<any>(null)
   const [category, setCategory] = useState<any>(null)
@@ -62,20 +62,20 @@ const MegaMenuMobile = ({ categories, departments, Login }: Props) => {
 
   }, [isOpenMenu]);
 
-  useEffect(() => {
-    console.log("category", category)
+  // useEffect(() => {
+  //   console.log("category", category)
 
-  }, [category]);
+  // }, [category]);
 
-  useEffect(() => {
-    console.log("subCategory1", subCategory1)
+  // useEffect(() => {
+  //   console.log("subCategory1", subCategory1)
 
-  }, [subCategory1]);
+  // }, [subCategory1]);
 
-  useEffect(() => {
-    console.log("subCategory2", subCategory2)
+  // useEffect(() => {
+  //   console.log("subCategory2", subCategory2)
 
-  }, [subCategory2]);
+  // }, [subCategory2]);
 
   const handleBtnToggle = () => {
     setIsOpenMenu(!isOpenMenu)
@@ -140,7 +140,7 @@ const MegaMenuMobile = ({ categories, departments, Login }: Props) => {
 
   const clickOnLogin = () => {
     const loginButton = document.querySelector(".vtex-login-2-x-buttonLink .vtex-button") as HTMLElement
-    console.log("loginButton",loginButton)
+    // console.log("loginButton",loginButton)
     if( loginButton ) loginButton.click()
   }
   return (
